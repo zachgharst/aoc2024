@@ -19,13 +19,18 @@ fn main() {
     let day = &args[1];
     let part = if args.len() == 3 { &args[2] } else { "1" };
 
-    run_day(day, part);
+    let result = run_day(day, part);
+
+    match result {
+        Ok(r) => println!("{}", r),
+        Err(e) => println!("Error: {}", e),
+    }
 }
 
-fn run_day(day: &str, part: &str) {
+fn run_day(day: &str, part: &str) -> Result<String, Box<dyn std::error::Error>> {
     match day {
         "1" => if part == "1" { day01::part1() } else { day01::part2() },
         "2" => if part == "1" { day02::part1() } else { day02::part2() },
-        _ => println!("Day not found"),
+        _ => Err("Invalid day".into()),
     }
 }
