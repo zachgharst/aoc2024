@@ -1,6 +1,7 @@
 use std::env;
 
 pub mod day01;
+pub mod day02;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -24,6 +25,7 @@ fn main() {
 fn run_day(day: &str, part: &str) {
     match day {
         "1" => if part == "1" { day01::part1() } else { day01::part2() },
+        "2" => if part == "1" { day02::part1() } else { day02::part2() },
         _ => println!("Day not found"),
     }
 }
